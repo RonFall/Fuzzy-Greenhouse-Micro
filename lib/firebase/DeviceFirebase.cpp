@@ -8,9 +8,6 @@ FirebaseAuth fireAuth;
 
 void initFirebaseService(String deviceApiKey, String deviceDatabaseUrl, String deviceEmail, String devicePass)
 {
-  /* Уникальный индентификатор микроконтроллера (присваивается всем пользователям Firebase Auth) */
-  String deviceUid;
-
   Serial.printf("Firebase Client v%s\n\n", FIREBASE_CLIENT_VERSION);
 
   // Определение уникального ключа устройства и ссылки на Firebase Realtime Database
@@ -35,18 +32,14 @@ void initFirebaseService(String deviceApiKey, String deviceDatabaseUrl, String d
     delay(1000);
   }
 
-  deviceUid = fireAuth.token.uid.c_str();
-  Serial.print("UID микроконтроллера: ");
-  Serial.println(deviceUid);
-  Serial.print("Адрес обращения к Realtime Database: ");
-  Serial.println("");
+  Serial.print("Успешно подключено к Firebase!");
 }
 
 void loopSendDataToRTDB(int temp, int hum, int illum)
 {
   String deviceUid = fireAuth.token.uid.c_str();
 
-  String basePath = "/devices/" + deviceUid;
+  String basePath = "/devices/antonov";
   String tempPath = basePath + "/temperature";
   String humpPath = basePath + "/humidity";
   String illumPath = basePath + "/illumination";

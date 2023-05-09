@@ -37,8 +37,6 @@ void initFirebaseService(String deviceApiKey, String deviceDatabaseUrl, String d
 
 void loopSendDataToRTDB(int temp, int hum, int illum)
 {
-  String deviceUid = fireAuth.token.uid.c_str();
-
   String basePath = "/devices/antonov";
   String tempPath = basePath + "/temperature";
   String humpPath = basePath + "/humidity";

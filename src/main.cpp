@@ -23,10 +23,12 @@ void setup()
 {
   Serial.begin(115200);
   delay(10);
-  
+
   connectToWiFi(wifiSsid, wifiPass);
 
   initFirebaseService(deviceApiKey, deviceDatabaseUrl, deviceEmail, devicePass);
+
+  setupSensors();
 }
 
 void loop()
